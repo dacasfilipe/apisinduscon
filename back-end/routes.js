@@ -81,4 +81,28 @@ router.put('/tasks/:id', async (req, res) => {
     }
 })
 
+//DELETE Deleta uma tarefa pelo ID
+router.delete('/tasks/:id', async (req, res) => {
+    try{
+        const task = await Task.findByPk(req.params.id);
+        if(!task){
+            res.status(404).json({
+                sucess: false,
+                message:"tarefa não encontrada",
+            });
+        }else{
+            await task.destroy();
+            res.json({
+                sucess: true,
+                message: "Tarefa deletada com sucesso",
+            });
+        }
+    }catch(error){
+        res.status(500).json({
+            sucess: false,
+            message: error.message,
+        });
+    }
+})
+
 module.exports = router;
