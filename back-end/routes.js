@@ -55,4 +55,30 @@ router.post('/tasks', async (req, res) => {
     }
 });
 
+//PUT Atualiza uma tarefa pelo ID
+router.put('/tasks/:id', async (req, res) => {
+    try{
+        const task = await Task.findByPk(req.params.id);
+        if(!task){
+            res.status(404).json({
+                sucess: false,
+                message:"tarefa não encontrada",
+            });
+        }else{
+            await task.update({
+                description: req.body.description,
+            });
+            res.json({
+                sucess: true,
+                message: "Tarefa atualizada com sucesso",
+            });
+        }
+    }catch(error){
+        res.status(500).json({
+            sucess: false,
+            message: error.message,
+        });
+    }
+})
+
 module.exports = router;
