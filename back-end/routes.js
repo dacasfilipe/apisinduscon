@@ -36,4 +36,23 @@ router.get('/tasks/:id', async (req, res) => {
     }
     });
 
+//POST Cria uma tarefa
+router.post('/tasks', async (req, res) => {
+    try{
+        const task = new Task({
+            description: req.body.description,
+        });
+        await task.save();
+        res.status(201).json({
+            sucess: true,
+            message: "Tarefa criada com sucesso",
+        });
+    }catch(error){
+        res.status(500).json({
+            sucess: false,
+            message: error.message,
+        });
+    }
+});
+
 module.exports = router;
