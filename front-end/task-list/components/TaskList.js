@@ -20,6 +20,62 @@ const TaskList = () => {
      fetchTasks();
     }, [page]);
 
+    const fetchTasks = async () => {
+        const data = await TaskService.getTasks(page,4);
+
+        if(page === 1){
+            setTasks(data);
+            return;
+        }
+        setTasks([...tasks, ...data]);
+    };
+
+    const loadMore = () => {
+        setPage(page + 1);
+    }
+
+    const handleCloseModal = () => {
+        setModalIsOpen(false);
+    }
+
+    const handleNew = () => {
+        setModalIsOpen(true);
+        setCurrentTaskId(0);
+    }
+
+    const handleEdit = (id) => {
+        setCurrentTaskId(id);
+        setModalIsOpen(true);
+    }
+
+    const handleDelete = (id) => {
+        TaskService.deleteTask(id)
+            .then(() => {
+                fetchTasks();
+                toast.success("Tarefa deletada com sucesso!");
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Erro ao deletar tarefa!");
+            })
+    }
+
+    const handleSave = async () => {
+        handleCloseModal();
+        toast.success("Dados atualizados com sucesso!");
+        setPage(1);
+        await fetchTasks();
+        //o método fetchTasks() reinicia a paginação sempre que um elemento for salvo
+    }
+
+    //O retorno é inserido em JSX que utiliza HTML para ser renderizado dentro do javascript
+    //o return de um componente react deve sempre retornar um único elemento, seja ele uma section, uma div ou um elemento vazio
+    return (
+        <>
+        
+        </>
+    )
+
     
 
 
