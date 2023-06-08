@@ -118,9 +118,6 @@ const TaskList = () => {
             <ToastContainer />
         </div>
     )
+};
 
-    
-
-
-
-}
+export default TaskList;
