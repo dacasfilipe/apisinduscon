@@ -14,4 +14,14 @@ const TaskList = () => {
     const [page, setPage] = useState(1);
     const [currentTask, setCurrentTask] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    //hook que serve para controlar efeitos colaterais de comportamento do componente
+    useEffect(() => {
+     fetchTasks();
+    }, [page]);
+
+    
+
+
+
 }
