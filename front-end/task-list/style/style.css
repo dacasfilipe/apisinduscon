@@ -10,3 +10,29 @@
     left: 50%;
 }
 
+input,
+button{
+    padding: 8px;
+    border-radius: 8px;
+    outline:none;
+    border: none;
+}
+
+button{
+    transition: all 300ms;
+}
+
+button:hover{
+    background: #aaa;
+}
+
+button.sucess{
+    background: #0a0;
+    color:#fff;
+}
+
+button.danger{
+    background: #f00;
+}
+
+
