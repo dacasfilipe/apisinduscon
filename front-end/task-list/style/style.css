@@ -35,4 +35,37 @@ button.danger{
     background: #f00;
 }
 
+input{
+    border: 1px solid #ccc;
+}
+
+button{
+    cursor: pointer;
+}
+
+table{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+table tr td{
+    text-align: center;
+}
+
+.main{
+    padding:20px;
+}
+
+.load-button-container{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-new-task-container{
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+
 
