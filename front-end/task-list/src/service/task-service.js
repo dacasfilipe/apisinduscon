@@ -47,7 +47,7 @@ class _TaskService {
     async updateTask(id, task) {
         try{
             //faz uma chamada PUT ao Api passando o ID
-            const response = await axiosInstance.patch(`/${id}`, task);
+            const response = await axiosInstance.put(`/${id}`, task);
             //retorna os dados da resposta
             return response.data;
         }catch(error){
